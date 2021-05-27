@@ -5,5 +5,10 @@
 	<string>ad-hoc</string>
 	<key>teamID</key>
 	<string>BT896L4Y6Y</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.chittapon.XcodeBot</key>
+		<string>xcodebot_sataging_adhoc</string>
+	</dict>
 </dict>
 </plist>
