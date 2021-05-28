@@ -11,7 +11,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.chittapon.XcodeBot</key>
-		<string>xcodebot_sataging_adhoc</string>
+		<string>4488899d-eceb-4ce2-822b-ffbf17d110e0</string>
 	</dict>
 </dict>
 </plist>
