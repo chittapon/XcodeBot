@@ -6,8 +6,6 @@
 	<string>ad-hoc</string>
 	<key>teamID</key>
 	<string>BT896L4Y6Y</string>
-	<key>signingStyle</key>
-	<string>manual</string>
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.chittapon.XcodeBot.staging</key>
