@@ -19,17 +19,14 @@ platform :ios do
   desc "Deploy XcodeBot Staging"
     lane :distribute_staging do
 
-      ipa_path = "#{ENV['XCS_PRODUCT']}"
-      source_path = "#{ENV['XCS_SOURCE_DIR']}"
+      project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
+      ipa_path = "#{project_path}/output"
 
-      sh "echo \"repo path \"#{ENV['XCS_SOURCE_DIR']}\"\""
-      sh "echo \"product path \"#{ENV['XCS_PRODUCT']}\"\""
-
-      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -exportOptionsPlist '\"#{source_path}\"/ExportOptions.plist'"
+      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}" -exportOptionsPlist \"#{project_path}\"/ExportOptions.plist"
 
       firebase_app_distribution(
           app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
-          ipa_path: "#{ENV['XCS_PRODUCT']}",
+          ipa_path: "#{ipa_path}",
           testers: "papcoe@gmail.com",
           release_notes: "Lots of amazing new features to test out!"
       )
