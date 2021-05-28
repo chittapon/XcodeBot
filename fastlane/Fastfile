@@ -22,7 +22,7 @@ platform :ios do
       project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
       ipa_path = "#{project_path}/output"
 
-      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}" -exportOptionsPlist \"#{project_path}\"/ExportOptions.plist"
+      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -exportOptionsPlist \"#{project_path}\"/ExportOptions.plist"
 
       firebase_app_distribution(
           app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
