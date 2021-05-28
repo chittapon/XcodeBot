@@ -23,7 +23,7 @@ platform :ios do
       ipa_path = "#{project_path}/output"
 
       sh "cat #{project_path}/ExportOptions.plist"
-      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -DTDKProvisioningProfileExtraSearchPaths=/Library/Developer/XcodeServer/ProvisioningProfiles -exportOptionsPlist \"#{project_path}/ExportOptions.plist\""
+      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -IDEPostProgressNotifications=YES -DVTAllowServerCertificates=YES -DVTSigningCertificateSourceLogLevel=3 -DVTSigningCertificateManagerLogLevel=3 -DTDKProvisioningProfileExtraSearchPaths=/Library/Developer/XcodeServer/ProvisioningProfiles -exportOptionsPlist \"#{project_path}/ExportOptions.plist\""
 
       firebase_app_distribution(
           app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
