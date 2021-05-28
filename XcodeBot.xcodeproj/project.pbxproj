@@ -389,7 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Chittapon Thongchim (BT896L4Y6Y)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = BT896L4Y6Y;
 				INFOPLIST_FILE = XcodeBot/Info.plist;
