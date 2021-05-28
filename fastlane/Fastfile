@@ -22,6 +22,7 @@ platform :ios do
       project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
       ipa_path = "#{project_path}/output"
 
+      sh "cat ExportOptions.plist"
       sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -DTDKProvisioningProfileExtraSearchPaths=/Library/Developer/XcodeServer/ProvisioningProfiles -exportOptionsPlist \"#{project_path}/ExportOptions.plist\""
 
       firebase_app_distribution(
