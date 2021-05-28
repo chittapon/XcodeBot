@@ -1,0 +1,12 @@
+//
+//  Staging.xcconfig
+//  XcodeBot
+//
+//  Created by Chittapon Thongchim on 28/5/2564 BE.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+VERSION_NUMBER=2.40.0
+BUILD_NUMBER=1

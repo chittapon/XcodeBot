@@ -26,6 +26,7 @@
 		C40DF7C82654CEDC00980E8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40DF7CA2654CEDC00980E8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4251329265FA175001E645B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4B5284B2661011500CE9CA6 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 		C40DF7BB2654CEDA00980E8B /* XcodeBot */ = {
 			isa = PBXGroup;
 			children = (
+				C4B5284A2661006500CE9CA6 /* Configurations */,
 				C40DF7BC2654CEDA00980E8B /* AppDelegate.swift */,
 				C40DF7BE2654CEDA00980E8B /* SceneDelegate.swift */,
 				C40DF7C02654CEDA00980E8B /* ViewController.swift */,
@@ -68,6 +70,14 @@
 				C40DF7CA2654CEDC00980E8B /* Info.plist */,
 			);
 			path = XcodeBot;
+			sourceTree = "<group>";
+		};
+		C4B5284A2661006500CE9CA6 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				C4B5284B2661011500CE9CA6 /* Staging.xcconfig */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,17 +396,20 @@
 		};
 		C4251328265FA0C7001E645B /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4B5284B2661011500CE9CA6 /* Staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Chittapon Thongchim (BT896L4Y6Y)";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = BT896L4Y6Y;
 				INFOPLIST_FILE = XcodeBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "$(VERSION_NUMBER)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chittapon.XcodeBot.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = xcodebot_sataging_adhoc;

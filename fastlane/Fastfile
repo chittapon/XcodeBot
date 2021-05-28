@@ -16,21 +16,46 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Deploy XcodeBot Staging"
-    lane :distribute_staging do
 
-      project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
-      ipa_path = "#{project_path}/output"
+  desc "Pre-integration Staging"
+  lane :staging_pre_integration do
 
-      sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -DTDKProvisioningProfileExtraSearchPaths=/Library/Developer/XcodeServer/ProvisioningProfiles -exportOptionsPlist \"#{project_path}/ExportOptions.plist\""
+    #git version control
+    branch_name = ENV['BRANCH'] || 'develop'
+    sh "git checkout -f #{branch_name}"
+    git_submodule_update(recursive: true, init: true)
 
-      release_notes = ENV['RELEASE_NOTES'] || 'unknown'
+    #config versioning
+    project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
+    version_number = ENV['VERSION_NUMBER'] || get_xcconfig_value(path: path, name: 'VERSION_NUMBER')
+    build_number = number_of_commits(all: true)
+    increment_build_number(build_number: build_number)
+    config_path = "#{project_path}/Configurations/Staging.xconfig"
+    update_xcconfig_value(path: path,
+                          name: 'VERSION_NUMBER',
+                          value: version_number)
+    update_xcconfig_value(path: path,
+                          name: 'BUILD_NUMBER',
+                          value: build_number)
+    
+  end
 
-      firebase_app_distribution(
-          app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
-          ipa_path: "#{ipa_path}/XcodeBot.ipa",
-          testers: "papcoe@gmail.com",
-          release_notes: "#{release_notes}"
-      )
-    end
+  desc "Distribute Staging"
+  lane :staging_post_integration do
+
+    project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
+    ipa_path = "#{project_path}/output"
+
+    sh "xcrun xcodebuild -exportArchive -archivePath \"#{ENV['XCS_ARCHIVE']}\" -exportPath \"#{ipa_path}\" -DTDKProvisioningProfileExtraSearchPaths=/Library/Developer/XcodeServer/ProvisioningProfiles -exportOptionsPlist \"#{project_path}/ExportOptions.plist\""
+
+    release_notes = ENV['RELEASE_NOTES'] || 'unknown'
+
+    firebase_app_distribution(
+        app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
+        ipa_path: "#{ipa_path}/XcodeBot.ipa",
+        testers: "papcoe@gmail.com",
+        release_notes: "#{release_notes}"
+    )
+  end
+
 end

@@ -1,4 +1,1 @@
-export PATH=/Users/chittapon/.rbenv/shims:$PATH
-export LC_ALL=en_US.UTF-8
-bundle install
-fastlane distribute_staging
+fastlane staging_post_integration
