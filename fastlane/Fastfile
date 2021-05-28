@@ -35,7 +35,7 @@ platform :ios do
                           value: version_number)
     update_xcconfig_value(path: config_path,
                           name: 'BUILD_NUMBER',
-                          value: build_number)
+                          value: "#{build_number}")
     
   end
 
