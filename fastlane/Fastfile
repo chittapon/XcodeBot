@@ -20,7 +20,7 @@ platform :ios do
   desc "Pre-integration Staging"
   lane :staging_pre_integration do
 
-    #git version control
+    #source control
     branch_name = ENV['BRANCH'] || 'develop'
     sh "git checkout -f #{branch_name}"
     git_submodule_update(recursive: true, init: true)
@@ -29,7 +29,7 @@ platform :ios do
     project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
     config_path = "#{project_path}/Configurations/Staging.xcconfig"
     version_number = ENV['VERSION_NUMBER'] || get_xcconfig_value(path: config_path, name: 'VERSION_NUMBER')
-    build_number = number_of_commits(all: true)
+    build_number = Time.now.to_i
     update_xcconfig_value(path: config_path,
                           name: 'VERSION_NUMBER',
                           value: version_number)
