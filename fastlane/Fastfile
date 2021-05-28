@@ -27,14 +27,14 @@ platform :ios do
 
     #config versioning
     project_path = "#{ENV['XCS_SOURCE_DIR']}/XcodeBot"
-    version_number = ENV['VERSION_NUMBER'] || get_xcconfig_value(path: path, name: 'VERSION_NUMBER')
+    config_path = "#{project_path}/Configurations/Staging.xconfig"
+    version_number = ENV['VERSION_NUMBER'] || get_xcconfig_value(path: config_path, name: 'VERSION_NUMBER')
     build_number = number_of_commits(all: true)
     increment_build_number(build_number: build_number)
-    config_path = "#{project_path}/Configurations/Staging.xconfig"
-    update_xcconfig_value(path: path,
+    update_xcconfig_value(path: config_path,
                           name: 'VERSION_NUMBER',
                           value: version_number)
-    update_xcconfig_value(path: path,
+    update_xcconfig_value(path: config_path,
                           name: 'BUILD_NUMBER',
                           value: build_number)
     
