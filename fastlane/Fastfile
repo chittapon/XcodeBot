@@ -27,7 +27,7 @@ platform :ios do
 
       firebase_app_distribution(
           app: "1:841477594869:ios:33dd3fdd3279b95ca76fbc",
-          ipa_path: "#{ipa_path}",
+          ipa_path: "#{ipa_path}/XcodeBot.ipa",
           testers: "papcoe@gmail.com",
           release_notes: "Lots of amazing new features to test out!"
       )
